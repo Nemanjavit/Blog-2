@@ -6,7 +6,7 @@ import "react-placeholder/lib/reactPlaceholder.css";
 const BlogPost = () => {
 	return (
 		<>
-			<div className="col-9">
+			<div className="my-3 blog-post">
 				<div className="w-100 d-flex post-header">
 					<ReactPlaceholder
 						type="rect"
