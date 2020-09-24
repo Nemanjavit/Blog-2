@@ -7,5 +7,8 @@ class PostApi {
 	static addPost(data) {
 		return http.post(`BlogPosts`, data);
 	}
+	static getPostsByCategory(id) {
+		return http.get(`BlogPosts/GetPostByCategory?categoryId=${id}`);
+	}
 }
 export default PostApi;

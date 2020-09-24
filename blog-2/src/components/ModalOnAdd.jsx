@@ -4,11 +4,14 @@ import { useFormik } from "formik";
 import { GoDiffAdded } from "react-icons/go";
 import CategoryApi from "../http/CategoryApi";
 
-const ModalOnAdd = ({ modalIsOpen, closeModal }) => {
+const ModalOnAdd = ({
+	modalIsOpen,
+	closeModal,
+	categoryAddSuccess,
+	categoryAdded,
+}) => {
 	const [categories, setCategories] = useState([]);
 	const [addCategoryOpen, setaddCategoryOpen] = useState(false);
-	const [categoryAdded, setCategoryAdded] = useState(false);
-
 	const openAddCategory = () => setaddCategoryOpen(true);
 	Modal.setAppElement("#root");
 
@@ -40,7 +43,7 @@ const ModalOnAdd = ({ modalIsOpen, closeModal }) => {
 		},
 		onSubmit: async (values) => {
 			const result = await CategoryApi.addCategory(values);
-			setCategoryAdded(true);
+			categoryAddSuccess();
 		},
 	});
 
