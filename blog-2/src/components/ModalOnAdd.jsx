@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { useFormik } from "formik";
 import { GoDiffAdded } from "react-icons/go";
 import CategoryApi from "../http/CategoryApi";
+import PostApi from "../http/PostApi";
 
 const ModalOnAdd = ({
 	modalIsOpen,
@@ -25,15 +26,21 @@ const ModalOnAdd = ({
 		getCategories();
 	}, [categoryAdded]);
 
-	// blog post
+	// add blog post
 	const formik = useFormik({
 		initialValues: {
 			title: "",
 			text: "",
 			categoryId: "",
 		},
-		onSubmit: (values) => {
-			console.log(values);
+		onSubmit: async (values) => {
+			try {
+				const result = await PostApi.addPost(values);
+				setTimeout(() => {
+					closeModal();
+				}, 300);
+				console.log(result.data);
+			} catch (error) {}
 		},
 	});
 	// add new category
@@ -86,11 +93,15 @@ const ModalOnAdd = ({
 							value={formik.values.categoryId}
 							onChange={formik.handleChange}
 							className="col-8"
-							name="categoryId"
+							id="categoryId"
 						>
 							{/* making list out of categories that we made  */}
 							{categories.map((category) => {
-								return <option key={category.id}>{category.name}</option>;
+								return (
+									<option key={category.id} value={category.id}>
+										{category.name}
+									</option>
+								);
 							})}
 						</select>
 						<GoDiffAdded onClick={openAddCategory} />
