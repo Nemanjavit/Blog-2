@@ -10,5 +10,8 @@ class PostApi {
 	static getPostsByCategory(id) {
 		return http.get(`BlogPosts/GetPostByCategory?categoryId=${id}`);
 	}
+	static deletePost(id) {
+		return http.delete(`BlogPosts/${id}`);
+	}
 }
 export default PostApi;

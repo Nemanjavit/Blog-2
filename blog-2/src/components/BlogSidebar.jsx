@@ -14,7 +14,7 @@ const BlogSidebar = ({ categoryAdded, postByCategory }) => {
 	}, [categoryAdded]);
 
 	return (
-		<aside className="col-2 text-center d-flex align-items-center flex-column">
+		<aside className="col-2 text-center d-flex align-items-center flex-column border border-dark my-3">
 			{categories.map((category) => {
 				return (
 					<button

@@ -34,13 +34,16 @@ const ModalOnAdd = ({
 			categoryId: "",
 		},
 		onSubmit: async (values) => {
+			console.log(values);
 			try {
 				const result = await PostApi.addPost(values);
+				console.log(result.data);
 				setTimeout(() => {
 					closeModal();
 				}, 300);
-				console.log(result.data);
-			} catch (error) {}
+			} catch (error) {
+				console.log(error);
+			}
 		},
 	});
 	// add new category
@@ -95,6 +98,7 @@ const ModalOnAdd = ({
 							className="col-8"
 							id="categoryId"
 						>
+							<option></option>
 							{/* making list out of categories that we made  */}
 							{categories.map((category) => {
 								return (
@@ -118,6 +122,7 @@ const ModalOnAdd = ({
 						/>
 						<button
 							onClick={categoryForm.handleSubmit}
+							type="button"
 							className="ml-1 border-0 w-25"
 						>
 							Add Category
@@ -140,7 +145,13 @@ const ModalOnAdd = ({
 						<button className="my-3 w-25 bg-dark text-white " type="submit">
 							Post
 						</button>
-						<button className="w-25  bg-dark text-white">Cancel</button>
+						<button
+							onClick={closeModal}
+							type="button"
+							className="w-25  bg-dark text-white"
+						>
+							Cancel
+						</button>
 					</div>
 				</form>
 			</Modal>

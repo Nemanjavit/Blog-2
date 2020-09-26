@@ -3,10 +3,10 @@ import ReactPlaceholder from "react-placeholder";
 import RectShape from "react-placeholder";
 import "react-placeholder/lib/reactPlaceholder.css";
 
-const BlogPost = () => {
+const BlogPost = ({ post, onDelete }) => {
 	return (
 		<>
-			<div className="my-3 blog-post">
+			<div className="my-3 p-3 blog-post">
 				<div className="w-100 d-flex post-header">
 					<ReactPlaceholder
 						type="rect"
@@ -14,20 +14,14 @@ const BlogPost = () => {
 						color="#E0E0E0"
 						style={{ width: 80, height: 80 }}
 					></ReactPlaceholder>
-					<span className="text-left">Blog Post 1</span>
-					<button className="ml-auto">Edit</button>
-					<button className=" ml-2">Delete</button>
+					<span className="text-left">Blog Post {post.id}</span>
+					<button className="ml-auto button">Edit</button>
+					<button onClick={onDelete} className=" ml-2 button">
+						Delete
+					</button>
 				</div>
 				<div className="post-body">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor totam
-						blanditiis, adipisci autem explicabo vero aliquid hic voluptates et!
-						Hic cupiditate esse neque architecto, repellendus repellat delectus
-						sed earum impedit.Lorem ipsum dolor sit amet consectetur adipisicing
-						elit. Dolor totam blanditiis, adipisci autem explicabo vero aliquid
-						hic voluptates et! Hic cupiditate esse neque architecto, repellendus
-						repellat delectus sed earum impedit.
-					</p>
+					<p>{post.text}</p>
 				</div>
 				<div className="post-footer d-flex">
 					<RectShape
@@ -54,3 +48,10 @@ const BlogPost = () => {
 };
 
 export default BlogPost;
+// Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor totam
+// 						blanditiis, adipisci autem explicabo vero aliquid hic voluptates et!
+// 						Hic cupiditate esse neque architecto, repellendus repellat delectus
+// 						sed earum impedit.Lorem ipsum dolor sit amet consectetur adipisicing
+// 						elit. Dolor totam blanditiis, adipisci autem explicabo vero aliquid
+// 						hic voluptates et! Hic cupiditate esse neque architecto, repellendus
+// 						repellat delectus sed earum impedit.

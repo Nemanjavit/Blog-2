@@ -4,3 +4,21 @@
 	overflow-x: hidden;
 	box-sizing: border-box;
 }
+
+.button {
+	color: white;
+	background: black;
+	border: none;
+	border-radius: 3px;
+	width: 10%;
+	height: 30px;
+}
+.button-wide {
+	width: 15%;
+}
+.blog-post {
+	border: 1px solid black;
+}
+.blog-post:nth-child(odd) {
+	background-color: grey;
+}
